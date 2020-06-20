@@ -1,0 +1,36 @@
+<div class="ui container">
+    <form action="/add" class="ui form" method="post">
+        <div class="ui two fields">
+            <div class="field">
+                <label for="name">Movie Name</label>
+                <input type="text" name="name">
+            </div>
+            <div class="field">
+                <label for="type">Movie Type</label>
+                <select name="type" id="">
+                    <option value="action">Action</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="animation">Animation</option>
+                    <option value="scifi">Sci-Fi</option>
+                </select>
+            </div>
+        </div>
+        <!-- HERE WE NEED TO USE FILEPOND -->
+        <div class="ui field">
+            <label for="img">Image</label>
+            <input type="file" name="img" id="img" class="filepond filepond--item">
+        </div>
+        <button class="ui fluid blue button" type="submit">Save</button>
+    </form>
+</div>
+
+<br><br>
+<div class="ui container">
+    <% if(movie) { %>
+        <div class="ui small stackable images ">
+            <% movie.forEach(m => { %>
+            <img src="<%= m.coverImagePath %>" alt="" class="ui image">
+            <% }) %>
+        </div>
+    <% } %>
+</div>
