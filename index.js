@@ -10,7 +10,7 @@ const app = express();
 
 
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types
-const imageMimeTypes = ["image/jpeg", "image/png", "images/gif"];
+const imageMimeTypes = ["image/jpeg", "image/png", "images/gif", "image/webp"];
 
 
 // DATABASE CONNECTION
