@@ -50,6 +50,7 @@ app.post('/add', async ( req, res, next)=>{
   });
 
   // SETTING IMAGE AND IMAGE TYPES
+  
   try{
     saveImage(movie, img);
     const newMovie = await movie.save();
@@ -70,6 +71,8 @@ function saveImage(movie, imgEncoded) {
 
   // ENCODING IMAGE BY JSON PARSE
   // The JSON.parse() method parses a JSON string, constructing the JavaScript value or object described by the string
+  //fixed no iamge bug
+
   try{
   const img = JSON.parse(imgEncoded);
   //console.log( "JSON parse: "+ img);
