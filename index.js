@@ -50,13 +50,14 @@ app.post('/add', async ( req, res, next)=>{
   });
 
   // SETTING IMAGE AND IMAGE TYPES
-  saveImage(movie, img);
   try{
+    saveImage(movie, img);
     const newMovie = await movie.save();
     console.log(newMovie);  
     res.redirect('/')  ;
   }catch (err){
-    console.log(err);    
+    console.log(err); 
+    res.redirect('/')  ;   
   }
 });
 
@@ -69,8 +70,9 @@ function saveImage(movie, imgEncoded) {
 
   // ENCODING IMAGE BY JSON PARSE
   // The JSON.parse() method parses a JSON string, constructing the JavaScript value or object described by the string
+  try{
   const img = JSON.parse(imgEncoded);
-  console.log( "JSON parse: "+ img);
+  //console.log( "JSON parse: "+ img);
   
   // CHECKING FOR JSON ENCODED IMAGE NOT NULL 
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types
@@ -83,13 +85,10 @@ function saveImage(movie, imgEncoded) {
     movie.img = new Buffer.from(img.data, "base64");
     movie.imgType = img.type;
   }
+}catch(err){
+  console.error(err);
 }
-
-
-
-
-
-
+}
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => console.log("Server is running on : " + port));
